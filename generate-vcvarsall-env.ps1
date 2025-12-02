@@ -37,7 +37,7 @@ for line in env_file.read_text(encoding="utf-8").splitlines():
     assert pos != -1
     new_line = f'`$env:{var_name}="{value}"'
     if var_name == "Path":
-        new_line += " + `$env:Path"
+        new_line += ' + ";`$env:Path`"'
     new_text += f"{new_line}\n"
 env_file.write_text(new_text)
 "@
