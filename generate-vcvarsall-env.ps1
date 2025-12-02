@@ -1,3 +1,8 @@
+Set-PSDebug -Trace 0
+Set-StrictMode -Version 3
+$ErrorActionPreference = "Stop"
+$PSNativeCommandUseErrorActionPreference = $true
+
 # `vswhere` path seems to be consistent.
 $program_files = [Environment]::GetEnvironmentVariable("ProgramFiles(x86)")
 $vswhere = "$program_files\Microsoft Visual Studio\Installer\vswhere.exe"
