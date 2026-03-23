@@ -8,10 +8,10 @@ Requires `python` to be available in `PATH`.
 
 ```powershell
 
-curl -L https://github.com/Andrej730/vcvarsall-pwsh/raw/master/generate-vcvarsall-env.ps1 -o generate-vcvarsall-env.ps1
+curl -L https://github.com/Andrej730/vcvarsall-pwsh/raw/master/generate_vcvarsall_env.py -o generate_vcvarsall_env.py
 
 # Produce `vcvarsall.bat`-like environment in `vcvarsall-env.ps1`.
-pwsh -NoProfile -File .\generate-vcvarsall-env.ps1
+python .\generate_vcvarsall_env.py
 
 # Source the generated environment.
 . .\vcvarsall-env.ps1
