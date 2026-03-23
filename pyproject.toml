@@ -1,0 +1,6 @@
+[project]
+name = "vcvarsall-pwsh"
+version = "1.0"
+
+[project.scripts]
+vcvarsall-env = "generate_vcvarsall_env:main"
