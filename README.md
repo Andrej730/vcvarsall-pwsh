@@ -1,20 +1,17 @@
 ### `vcvarsall.bat` environment in PowerShell
 
-It's annoying that `vcvarsall.bat` environment cannot be simply sourced in PowerShell. 
-This script is producing a PowerShell script that can help in this case. 
+It's annoying that `vcvarsall.bat` environment cannot be simply sourced in PowerShell.
+This script outputs `vcvarsall.bat` environment as PowerShell assignments to stdout, which can be applied with `iex`.
 
 Requires `python` to be available in `PATH`.
 
-
 ```powershell
+# With uv:
+uv tool install git+https://github.com/Andrej730/vcvarsall-pwsh.git
+vcvarsall-env | iex
 
-curl -L https://github.com/Andrej730/vcvarsall-pwsh/raw/master/generate_vcvarsall_env.py -o generate_vcvarsall_env.py
-
-# Produce `vcvarsall.bat`-like environment in `vcvarsall-env.ps1`.
-python .\generate_vcvarsall_env.py
-
-# Source the generated environment.
-. .\vcvarsall-env.ps1
+# Without uv:
+curl -L https://github.com/Andrej730/vcvarsall-pwsh/raw/master/generate_vcvarsall_env.py | python - | iex
 
 # Confirm it is working.
 # Microsoft (R) C/C++ Optimizing Compiler Version 19.44.35217 for x64

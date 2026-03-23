@@ -13,12 +13,12 @@ def main() -> None:
     ).strip()
     vcvars = Path(vs_path) / r"VC\Auxiliary\Build\vcvarsall.bat"
 
-    vcvars_env = Path("vcvarsall-env.ps1")
-
     # Run vcvarsall.bat in a minimal environment and capture the resulting env vars.
     minimal_env: dict[str, str] = {}
     # If this is missing, `vcvarsall.bat` is missing some paths (e.g. `rc` is not available).
-    minimal_env["Path"] = r"C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\system32"
+    minimal_env["Path"] = (
+        r"C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\system32"
+    )
     # Fixes: Internal Windows PowerShell error. Loading managed Windows PowerShell failed with error 8009001d.
     minimal_env["SystemRoot"] = r"C:\Windows"
 
@@ -39,8 +39,7 @@ def main() -> None:
             new_line += ' + ";$env:Path"'
         lines.append(new_line)
 
-    vcvars_env.write_text("\n".join(lines) + "\n")
-    print(f"Run `. .\\{vcvars_env}` to set up `vcvarsall` environment.")
+    print("\n".join(lines))
 
 
 if __name__ == "__main__":
